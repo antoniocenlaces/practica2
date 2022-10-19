@@ -11,27 +11,32 @@
 #include <cstdlib>
 using namespace std;
 
-bool checkPoint(double x1, double y1) {
+bool checkPoint(double x1, double y1, unsigned RANGE) {
     // cout << x1 << " " << y1 << endl;
-        if (sqrt(pow(0.5 - x1, 2) + pow(0.5 - y1, 2)) < 0.5) {
+        if (sqrt(x1*x1 + y1*y1) <= (RAND_MAX/RANGE)) {
             return true;
         } else {
             return false;
         }
-
     }
 
 int main() {
     srand(time(NULL));
-    const unsigned RANGE = 100;
-    cout << "Dime el número de iteraciones a utilizar en el método de Montecarlo: ";
+    const double RANGE = 100000;
+    cout << "RAND_MAX: " << RAND_MAX << endl;
+    cout << "RAND_MAX/RANGE " << RAND_MAX/RANGE << endl;
+    cout << "Dime el número dteraciones a utilizar en el método de Montecarlo: ";
     unsigned n;
     cin >> n;
  
     unsigned pointsIn = 0;
 
     for (int i = 0; i < n; i++) {
-        if (checkPoint((rand() % RANGE)/double(RANGE), (rand() % RANGE)/double(RANGE))) {
+        double x1 = rand()/RANGE;
+        double y1 = rand()/RANGE;
+         cout << x1 << " " << y1 << endl;
+        // cout << x1 / double(RANGE) << " " << y1 / double(RANGE) << endl;
+        if (checkPoint(x1 , y1 , RANGE)) {
             pointsIn++;
         }
 
