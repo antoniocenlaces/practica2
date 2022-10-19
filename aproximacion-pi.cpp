@@ -10,22 +10,30 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
+/* RANGE= constante global (10e5) para convertir rand() en número entre 0 y 0.32767*/
+const double RANGE = 100000.0;
+const double RADIUS=RAND_MAX/RANGE;
 
-bool checkPoint(double x1, double y1, unsigned RANGE) {
+/* Función para calcular la distacia del punto (x1,y1) al (0,0) 
+ y devuelve 'true' si ese valor es menor que RADIUS */
+bool checkPoint(double x1, double y1) {
     // cout << x1 << " " << y1 << endl;
-        if (sqrt(x1*x1 + y1*y1) <= (RAND_MAX/RANGE)) {
+        if (sqrt(x1*x1 + y1*y1) <= RADIUS) {
             return true;
         } else {
             return false;
         }
     }
 
+/* Solo genero puntos aleatorios en el cuadrante con x1>=0 e y1>=0
+  con una circinferencia de radio RADIUS, para realizar menos cálculos
+  de distancias */
 int main() {
     srand(time(NULL));
-    const double RANGE = 100000;
-    cout << "RAND_MAX: " << RAND_MAX << endl;
-    cout << "RAND_MAX/RANGE " << RAND_MAX/RANGE << endl;
-    cout << "Dime el número dteraciones a utilizar en el método de Montecarlo: ";
+    
+    // cout << "RAND_MAX: " << RAND_MAX << endl;
+    // cout << "RAND_MAX/RANGE " << RAND_MAX/RANGE << endl;
+    cout << "Dime el número de iteraciones a utilizar en el método de Montecarlo: ";
     unsigned n;
     cin >> n;
  
@@ -34,9 +42,9 @@ int main() {
     for (int i = 0; i < n; i++) {
         double x1 = rand()/RANGE;
         double y1 = rand()/RANGE;
-         cout << x1 << " " << y1 << endl;
+        // cout << x1 << " " << y1 << endl;
         // cout << x1 / double(RANGE) << " " << y1 / double(RANGE) << endl;
-        if (checkPoint(x1 , y1 , RANGE)) {
+        if (checkPoint(x1 , y1)) {
             pointsIn++;
         }
 

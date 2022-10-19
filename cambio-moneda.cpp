@@ -16,17 +16,23 @@ int main() {
     double eurosTotales;
     cin >> eurosTotales;
 
-    unsigned euros= int(eurosTotales);
-    
-    double centimos = eurosTotales - euros;
+    if (eurosTotales >= 0) {
+        unsigned euros= int(eurosTotales);
+        
+        double centimos = eurosTotales - euros;
 
-    unsigned pesetas = int(round(eurosTotales*CAMBIO));
-    
-    cout << "Son " << euros << " Euros y " << int(round(centimos * 100)) <<
-            " centimos que equivalen a " << pesetas << " peseta";
+        unsigned pesetas = int(round(eurosTotales*CAMBIO));
+        
+        cout << "Son " << euros << " Euros y " << int(round(centimos * 100)) <<
+                " centimos que equivalen a " << pesetas << " peseta";
 
-    if (pesetas > 1 || pesetas == 0) {
-        cout << "s";
+        if (pesetas > 1 || pesetas == 0) {
+            cout << "s";
+        }
+        cout << "." << endl;
+        return 0;
+    } else {
+        cout << "Solo se admiten valores mayores que cero" << endl;
+        return 1;
     }
-    cout << "." << endl;
 }
