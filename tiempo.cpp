@@ -13,9 +13,11 @@ int main() {
     const unsigned SECONDS_IN_MINUTE = 60;
 
     cout << "Duración en segundos: ";
-    unsigned duration;
+    int duration;
     cin >> duration;
-    cout << endl;
+    if (duration < 0) {
+        duration = -duration;
+    }
 
     cout << "Este tiempo equivale a " << duration / SECONDS_IN_DAY << " días ";
     duration = duration % SECONDS_IN_DAY;

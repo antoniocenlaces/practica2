@@ -19,6 +19,10 @@ int main() {
     cout << " Escriba un número entero entre 1 y 10: ";
     unsigned number;
     cin >> number;
+    while (number < 1 || number > 10) {
+        cout << "Por favor escriba un número entre 1 y 10: ";
+        cin >> number;
+    }
 
     cout << endl << number << " = ";
 

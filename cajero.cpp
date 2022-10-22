@@ -20,21 +20,26 @@ int main() {
     unsigned eurosToDeliver;
     cin >> eurosToDeliver;
 
-    unsigned notesFifty = eurosToDeliver / NOTE_50;
-    eurosToDeliver = eurosToDeliver % NOTE_50;
+    if (eurosToDeliver < 0 || eurosToDeliver % 10 != 0) {
+        cout << "Solo son válidas cantidades positivas de euros y múltiplos de 10" << endl;
+        return 1;
+    } else {
+        unsigned notesFifty = eurosToDeliver / NOTE_50;
+        eurosToDeliver = eurosToDeliver % NOTE_50;
 
-    unsigned notesTwenty = eurosToDeliver / NOTE_20;
-    eurosToDeliver = eurosToDeliver % NOTE_20;
+        unsigned notesTwenty = eurosToDeliver / NOTE_20;
+        eurosToDeliver = eurosToDeliver % NOTE_20;
 
-    unsigned notesTen = eurosToDeliver / NOTE_10;
-    eurosToDeliver = eurosToDeliver % NOTE_10;
+        unsigned notesTen = eurosToDeliver / NOTE_10;
+        eurosToDeliver = eurosToDeliver % NOTE_10;
 
-    cout << endl;
+        cout << endl;
 
-    cout << left << setw(WIDE_10) << "Billetes" << "Euros" << endl;
-    cout << left << setw(WIDE_10) << "========" << "=====" << endl;
+        cout << left << setw(WIDE_10) << "Billetes" << "Euros" << endl;
+        cout << left << setw(WIDE_10) << "========" << "=====" << endl;
 
-    cout << right << setw(WIDE_5) << notesTen << setw(WIDE_9) << NOTE_10 << endl;
-    cout << right << setw(WIDE_5) << notesTwenty << setw(WIDE_9) << NOTE_20 << endl;
-    cout << right << setw(WIDE_5) << notesFifty << setw(WIDE_9) << NOTE_50 << endl;
+        cout << right << setw(WIDE_5) << notesTen << setw(WIDE_9) << NOTE_10 << endl;
+        cout << right << setw(WIDE_5) << notesTwenty << setw(WIDE_9) << NOTE_20 << endl;
+        cout << right << setw(WIDE_5) << notesFifty << setw(WIDE_9) << NOTE_50 << endl;
+    }
 }
