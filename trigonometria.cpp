@@ -37,7 +37,7 @@ int main() {
     if (abs(seno) == 1) {
         tangente = "Infinito";
     } else {
-        tangente = to_string(tan(radianes));
+        tangente = to_string(round(tan(radianes)*10000.0)/10000.0);
         /* Porque to_string() usa "%f que deja la parte decimal con 6 dígitos
          * Voy a substituir los últimos dos dígitos de tangente*/
         tangente[tangente.length() - 1] = ' ';
